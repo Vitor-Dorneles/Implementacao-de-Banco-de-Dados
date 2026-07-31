@@ -30,10 +30,21 @@ Aplicaremos os conhecimentos aprendidos na disciplina e aplicaremos no projeto d
 Por que usamos o Modelo de Entidade Relacionamento? Um dos Principais motivos é eliminar a duplicidade de informações (ex: cadastro de produtos duplicado), em uma tabela de banco de dados **não** podemos ter duas linhas iguais, duas linhas repetidas **tuplas**. Toda tabela precisa ter pelo menos um atributo, e um **campo único**, a **PK** 
 
 A partir do modelo Conceitual, tomaremos decisões para construir o banco físico
+Modelo Conceitual não reflete exatamente como será o modelo lógico/físico
+
 
 - atributo composto: um atributo que tem mais de uma "característica", por ex: Endereço sendo o atributo e contendo os dados de Endereço(rua, cep, etc)
 - Atributo multivalorado: um atributo que pode ter 1 ou mais valores para a mesma entidade (telefone)
-
+- Nulidade: Além da duplicidade, sempre que pudermos devemos eliminar os valores nulosn preferencia para a entidade que tiver menos registros
 
 ## Exercício de Revisão
-Exercício no BrModelo, 
+Exercício no BrModelo, construimos o modelo Conceitual, fizemos forwad enginer para gerar o modelo lógico, no modelo lógico definimos os tipos dos atributos (varchar, etc) e depois geramos o modelo físico(SQL)
+
+
+## Exercício de Aula (Funcionario-Departamento)
+
+### Modelo Conceitual 
+![alt text](/Aulas/Aula-01/ExercíciosBRModelo/imagens/Conceitual.png)
+
+### Modelo Lógico
+![alt text](/Aulas/Aula-01//ExercíciosBRModelo/imagens/modelo_logico.png)
