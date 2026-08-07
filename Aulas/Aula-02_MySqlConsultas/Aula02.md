@@ -29,6 +29,17 @@ Select L.titulo, l.ano_publicacao
 FROM LIVRO AS L
 WHERE l.titulo LIKE "%Dom%";
 
+### INNER JOIN
+SELECT *
+FROM LIVRO AS l
+JOIN autor as a ON L.FK_ID_AUTOR = A.ID_AUTOR; -- onde as duas tabelas se "encontram", teremos todos os campos das duas tabelas
+
+### relatorio ex
+Select
+    l.titulo AS "Título",
+    l.ano_publicacao AS "ANO",
+
+### Concat
 
 
 ### Operadores WHERE
