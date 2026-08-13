@@ -1,6 +1,11 @@
 // Data: 07/08/2026
-# Ajustar Repositório
-instalar mysql pc
+# Revisão Ultima Aula
+## D.E.R Conceitual/Lógico
+**Entidade Fraca:** a Chave primária desse elemento será composta, feita pela chave primária dele e da sua entidade "mãe", seria como uma entidade herança, caso eu apague a "mãe" todas as entidades dependentes são apagadas juntas
+## Dicas
+- Sem duplicidade
+- Mínimo de valores nulos
+- Mínimo de tabelas, quanto menas tabelas == sistema mais responsivo
 
 # Comandos SQL
 ## INSERT

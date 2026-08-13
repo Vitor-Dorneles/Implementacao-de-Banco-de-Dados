@@ -4,28 +4,23 @@
 1.1) Automatismos
 1.2) Segurança e integridade
 1.3) Procedimentos armazenados
-
 ### Unidade 2 - Otimização de consultas
 2.1) Principais algoritmos
 2.2) Indexação
 2.3) Visões
-
 ### Unidade 3 - Processamento de Transações
 3.1) Fundamentos
 3.2) Controle de concorrência
 3.3) Sistema de recuperação
-
 ### Unidade 4 - Banco de dados objeto-relacionais
 4.1) Modelo relacional estendido
 4.2) Utilização em um SGBD convencional
 4.3) Banco de dados temporais
-
 ## Projeto da disciplina
 Aplicaremos os conhecimentos aprendidos na disciplina e aplicaremos no projeto de extensão do museu 13 de maio
 
 ## Convenções SQL - Boas práticas
 [[Boas práticas]]
-
 ## Como representar Modelo Entidade Relacionamento Conceitual (ER)
 Por que usamos o Modelo de Entidade Relacionamento? Um dos Principais motivos é eliminar a duplicidade de informações (ex: cadastro de produtos duplicado), em uma tabela de banco de dados **não** podemos ter duas linhas iguais, duas linhas repetidas **tuplas**. Toda tabela precisa ter pelo menos um atributo, e um **campo único**, a **PK** 
 
@@ -42,9 +37,9 @@ Exercício no BrModelo, construimos o modelo Conceitual, fizemos forwad enginer 
 
 
 ## Exercício de Aula (Funcionario-Departamento)
-
-### Modelo Conceitual 
-![alt text](/Aulas/Aula-01/ExercíciosBRModelo/imagens/Conceitual.png)
+### Modelo Conceitual
+![alt text](file:///home/vitor/Projetos/Implementa%C3%A7%C3%A3o%20de%20Banco%20de%20Dados/Aulas/Aula
+![alt text](/Aulas/Aula-01_Apresentacao_Revisao//ExercíciosBRModelo/imagens/Conceitual.png)
 
 ### Modelo Lógico
-![alt text](/Aulas/Aula-01//ExercíciosBRModelo/imagens/modelo_logico.png)
+![alt text](/Aulas/Aula-01_Apresentacao_Revisao//ExercíciosBRModelo/imagens/modelo_logico.png)
