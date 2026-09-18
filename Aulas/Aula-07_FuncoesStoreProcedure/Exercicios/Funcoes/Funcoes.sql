@@ -1,0 +1,97 @@
+USE EMPRESA;
+GO
+
+-- PROJETOS DE UM FUNCIONARIO A PARTIR DO CPF
+CREATE OR ALTER FUNCTION fn_ProjetosPorFuncionario (@Cpf CHAR (11))
+RETURNS TABLE
+AS
+RETURN
+(
+	SELECT P.Projnome
+	FROM TRABALHA_EM AS T
+	JOIN PROJETO AS P
+		ON T.Pnr = P.Projnumero
+	WHERE T.Fcpf = @Cpf
+);
+GO
+
+SELECT * FROM dbo.fn_ProjetosPorFuncionario('12345678966');
+GO
+
+-- DEPENDENTES DE UM FUNCIONARIO A PARTIR DO CPF
+CREATE OR ALTER FUNCTION fn_ListarDependentes (@Cpf CHAR (11))
+RETURNS TABLE
+AS
+RETURN
+(
+	SELECT
+		D.Nome_dependente,
+		D.Parentesco
+	FROM DEPENDENTE AS D
+	WHERE D.Fcpf = @Cpf
+);
+GO
+
+SELECT * FROM dbo.fn_ListarDependentes('12345678966');
+GO
+
+-- NOME DO SUPERVISOR DE UM FUNCIONARIO
+CREATE OR ALTER FUNCTION fn_NomeSupervisor (@Cpf CHAR (11))
+RETURNS VARCHAR (50)
+AS
+BEGIN
+	DECLARE @NomeCompleto VARCHAR (50);
+
+	SELECT @NomeCompleto = CONCAT(S.Pnome, ' ', S.Minicial, ' ', S.Unome)
+	FROM FUNCIONARIO AS F
+	JOIN FUNCIONARIO AS S
+		ON F.Cpf_supervisor = S.Cpf
+	WHERE F.Cpf = @Cpf;
+
+	RETURN @NomeCompleto;
+END;
+GO
+
+SELECT dbo.fn_NomeSupervisor('12345678966') AS 'SUPERVISOR';
+GO
+
+-- VERIFICA SE O FUNCIONARIO GANHA MAIS QUE SEU SUPERVISOR
+CREATE OR ALTER FUNCTION fn_GanhaMaisQueSupervisor (@Cpf CHAR (11))
+RETURNS BIT
+AS
+BEGIN
+	DECLARE @SalarioFunc DECIMAL (10, 2);
+	DECLARE @SalarioSup DECIMAL (10, 2);
+	DECLARE @Resultado BIT = 0;
+
+	SELECT @SalarioFunc = F.Salario, @SalarioSup = S.Salario
+	FROM FUNCIONARIO AS F
+	JOIN FUNCIONARIO AS S
+		ON F.Cpf_supervisor = S.Cpf
+	WHERE F.Cpf = @Cpf;
+
+	IF (@SalarioFunc > @SalarioSup)
+		SET @Resultado = 1;
+
+	RETURN @Resultado;
+END;
+GO
+
+SELECT dbo.fn_GanhaMaisQueSupervisor('12345678966') AS 'GANHA MAIS';
+GO
+
+-- ANO EM QUE O FUNCIONARIO PODE SE APOSENTAR
+CREATE OR ALTER FUNCTION fn_AnoAposentadoria (@Datanasc DATE)
+RETURNS INT
+AS
+BEGIN
+	RETURN YEAR(@Datanasc) + 65;
+END;
+GO
+
+SELECT
+	F.Pnome,
+	CONVERT (VARCHAR, F.Datanasc, 103) AS 'DATA NASC',
+	dbo.fn_AnoAposentadoria(F.Datanasc) AS 'ANO APOSENTADORIA'
+FROM FUNCIONARIO AS F;
+GO
