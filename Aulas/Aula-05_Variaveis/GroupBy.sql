@@ -22,11 +22,14 @@ ON D.Cpf_gerente = F.Cpf;
 
 -- INTERSECT
 -- Encontre os funcionários que são supervisores
-SELECT F.Pnome, F.Cpf, F.Cpf_supervisor
-FROM FUNCIONARIO AS F;
-INTERSECT
-SELECT	Cpf_supervisor
-from FUNCIONARIO
+SELECT F.Pnome, F.Cpf
+FROM   FUNCIONARIO AS F
+WHERE  F.Cpf IN (SELECT Cpf
+                 FROM   FUNCIONARIO
+                 INTERSECT
+                 SELECT Cpf_supervisor
+                 FROM   FUNCIONARIO
+                 WHERE  Cpf_supervisor IS NOT NULL);
 
 -- Declaração GROUP BY
 -- Quantidade de funcionários por sexo
