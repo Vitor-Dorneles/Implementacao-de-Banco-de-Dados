@@ -1,0 +1,9 @@
+[
+  '{{repeat(200000, 250000)}}',
+  {
+    nome: '{{firstName()}} {{surname()}}',
+    cidade: '{{city()}}',
+    estado: '{{state()}}',
+    email: '{{email()}}'
+  }
+]

@@ -52,3 +52,13 @@ SET STATISTICS TIME ON;
 SELECT *
 FROM Funcionario
 WHERE Nome Like '%255000';
+
+INSERT INTO Funcionario
+VALUES 
+(300100, 'jj', 'Gerencia', 3500, GETDATE());
+
+CREATE NONCLUSTERED INDEX ix_Funcionario_Nome
+ON Funcionario (Nome);
+
+SELECT * FROM Funcionario
+WHERE DataAdmissao > '20150101' AND DataAdmissao <= '20150201'
